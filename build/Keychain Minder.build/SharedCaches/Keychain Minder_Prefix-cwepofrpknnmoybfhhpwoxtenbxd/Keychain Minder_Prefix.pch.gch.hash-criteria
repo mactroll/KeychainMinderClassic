@@ -1,0 +1,17 @@
+Keychain Minder_Prefix.pch
+4.0.0 20041026 (Apple Computer, Inc. build 4061)
+-x
+c
+-arch
+ppc
+-pipe
+-Wno-trigraphs
+-fpascal-strings
+-fasm-blocks
+-Os
+-fmessage-length=0
+-mtune=G4
+-fvisibility=hidden
+-mdynamic-no-pic
+-F/Users/mactroll/CocoaCrap/Keychain Minder/build
+-I/Users/mactroll/CocoaCrap/Keychain Minder/build/include
