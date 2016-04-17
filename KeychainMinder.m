@@ -1,3 +1,28 @@
+/*The MIT License (MIT)
+
+Copyright (c) 2016 Joel Rennich
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+
+
 #import "KeychainMinder.h"
 
 @implementation KeychainMinder
@@ -293,23 +318,23 @@ BOOL CheckPassword(NSString *myPassword) {
     
     //now to setup the authorization environment
     
-    AuthorizationItem authEnvItems[2];
-    authEnvItems[0].name = kAuthorizationEnvironmentUsername;
-    authEnvItems[0].valueLength = NSUserName().length;
-    authEnvItems[0].value = (void *)[NSUserName() UTF8String];
-    authEnvItems[0].flags = 0;
-    authEnvItems[1].name = kAuthorizationEnvironmentPassword;
-    authEnvItems[1].valueLength = myPassword.length;
-    authEnvItems[1].value = (void *)[myPassword UTF8String];
-    authEnvItems[1].flags = 0;
-    AuthorizationEnvironment authEnv;
-    authEnv.count = 2;
-    authEnv.items = authEnvItems;
+    AuthorizationItem authEnvironmentItems[2];
+    authEnvironmentItems[0].name = kAuthorizationEnvironmentUsername;
+    authEnvironmentItems[0].valueLength = NSUserName().length;
+    authEnvironmentItems[0].value = (void *)[NSUserName() UTF8String];
+    authEnvironmentItems[0].flags = 0;
+    authEnvironmentItems[1].name = kAuthorizationEnvironmentPassword;
+    authEnvironmentItems[1].valueLength = myPassword.length;
+    authEnvironmentItems[1].value = (void *)[myPassword UTF8String];
+    authEnvironmentItems[1].flags = 0;
+    AuthorizationEnvironment authEnvironment;
+    authEnvironment.count = 2;
+    authEnvironment.items = authEnvironmentItems;
 
     
     //and now to actually do the auth
     
-    OSStatus authStatus = AuthorizationCreate(&authRights, &authEnv, kAuthorizationFlagExtendRights, NULL);
+    OSStatus authStatus = AuthorizationCreate(&authRights, &authEnvironment, kAuthorizationFlagExtendRights, NULL);
     return (authStatus == errAuthorizationSuccess);
     
 }
